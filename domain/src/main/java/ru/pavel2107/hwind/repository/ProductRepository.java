@@ -10,5 +10,5 @@ import java.util.List;
  * Created by admin on 29.03.2016.
  */
 public interface ProductRepository extends JpaRepository<Product, Integer>{
-    List<Product> findByProductNamesLanguage(String lang, Pageable pageable);
+  //  List<Product> findByProductNamesLanguage(String lang, Pageable pageable);
 }

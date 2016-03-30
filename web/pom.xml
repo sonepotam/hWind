@@ -5,17 +5,16 @@
 <modelVersion>4.0.0</modelVersion>
 
 <groupId>ru.pavel2107.hwind</groupId>
-<artifactId>domain</artifactId>
+<artifactId>web</artifactId>
 <version>1.0-SNAPSHOT</version>
-<name>domain</name>
-<packaging>jar</packaging>
+<packaging>war</packaging>
 
 
 
 
 <parent>
-    <groupId>ru.pavel2107.hwind</groupId>
     <artifactId>root</artifactId>
+    <groupId>ru.pavel2107.hwind</groupId>
     <version>1.0-SNAPSHOT</version>
 </parent>
 
@@ -23,9 +22,59 @@
 
 <dependencies>
 
+    <!--  domain -->
+    <dependency>
+        <groupId>ru.pavel2107.hwind</groupId>
+        <artifactId>domain</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
 
+    <!--  service -->
+    <dependency>
+        <groupId>ru.pavel2107.hwind</groupId>
+        <artifactId>service</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+
+    <!-- Logging with SLF4J & LogBack -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jul-to-slf4j</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+        <scope>runtime</scope>
+    </dependency>
+
+
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
 
     <!-- Spring -->
+
 
     <dependency>
         <groupId>org.springframework</groupId>
@@ -44,15 +93,22 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
         <version>${spring.version}</version>
-        <exclusions>
-            <exclusion>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-            </exclusion>
-        </exclusions>
     </dependency>
 
-    <!-- Spring Boot -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+
+
+    <!-- Web -->
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-servlet-api</artifactId>
+        <version>${tomcat.version}</version>
+        <scope>provided</scope>
+    </dependency>
 
     <dependency>
         <groupId>org.springframework</groupId>
@@ -91,12 +147,19 @@
     </dependency>
 
 
-    <!--DataBase-->
+    <!-- Servlet -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+    </dependency>
+
 
     <dependency>
-        <groupId>org.postgresql</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>9.4-1203-jdbc42</version>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>jsp-api</artifactId>
+        <version>2.2</version>
+        <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -124,22 +187,6 @@
 
     </dependency>
 
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-entitymanager</artifactId>
-        <version>${hibernate.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-java8</artifactId>
-        <version>${hibernate.version}</version>
-    </dependency>
-
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-validator</artifactId>
-        <version>${hibernate-validator.version}</version>
-    </dependency>
 
 
     <!--Test-->
@@ -172,20 +219,23 @@
 
 
 </dependencies>
-<build>
-    <defaultGoal>package</defaultGoal>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.1</version>
-            <configuration>
-                <source>${java.version}</source>
-                <target>${java.version}</target>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
 
+
+    <build>
+        <finalName>web</finalName>
+        <defaultGoal>package</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>

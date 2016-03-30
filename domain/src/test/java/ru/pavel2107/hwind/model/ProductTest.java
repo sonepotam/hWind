@@ -73,9 +73,9 @@ public class ProductTest {
         engName.setLanguage( "fr_fr");
         engName.setProductName( "hello");
         list.add( engName);
-        product.setProductNames( list);
+      //  product.setProductNames( list);
 
-        list = product.getProductNames();
+   //     list = product.getProductNames();
 
     }
 }

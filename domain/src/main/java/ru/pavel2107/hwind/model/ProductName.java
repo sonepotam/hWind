@@ -25,8 +25,10 @@ public class ProductName {
 
 
     @ManyToOne
-    public Product getProduct(){ return product;}
-    public void setProduct( Product product){ this.product = product;}
+    //@JoinColumn( name = "product")
+    //public Product getProduct(){ return product;}
+    //public void setProduct( Product product){ this.product = product;}
+    //@JoinTable( name="product", joinColumns = )
     private Product product;
 
 

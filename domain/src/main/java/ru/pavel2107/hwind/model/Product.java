@@ -2,6 +2,7 @@ package ru.pavel2107.hwind.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by admin on 29.03.2016
@@ -22,10 +23,10 @@ public class Product {
     @Column( name = "spice")
     private Boolean spice;
 
-    @OneToMany(mappedBy = "product")
-    public List<ProductName> getProductNames(){ return productNames;};
-    public void setProductNames( List<ProductName> productNames){ this.productNames = productNames; }
-    private List<ProductName> productNames;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    //public Set<ProductName> getProductNames(){ return productNames;};
+    //public void setProductNames( Set<ProductName> productNames){ this.productNames = productNames; }
+    private Set<ProductName> productNames;
 
 
 

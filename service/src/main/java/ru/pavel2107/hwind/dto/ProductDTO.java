@@ -1,4 +1,4 @@
-package ru.pavel2107.dto;
+package ru.pavel2107.hwind.dto;
 
 import ru.pavel2107.hwind.model.PRODUCT_TYPE;
 import ru.pavel2107.hwind.model.Product;

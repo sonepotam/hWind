@@ -1,4 +1,4 @@
-package ru.pavel2107.service;
+package ru.pavel2107.hwind.service;
 
 import ru.pavel2107.hwind.model.Product;
 
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ProductService {
     Product save(Product product);
-    void delete( Product product);
+    void delete( Integer ID);
     Product get( Integer ID);
     List<Product> findAll( String lang, int startPage, int count);
 }
