@@ -33,8 +33,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public List<Product> findAll(String lang, int startPage, int size) {
-        //return (List<Product>)repository. findByProductNamesLanguage( lang,
-        //        new PageRequest( startPage, size, Sort.Direction.ASC, "name"));
-        return repository.findAll();
+        return (List<Product>)repository.findByNameLanguage( lang,
+                new PageRequest( startPage, size, Sort.Direction.ASC, "name"));
+        //return repository.findAll();
     }
 }

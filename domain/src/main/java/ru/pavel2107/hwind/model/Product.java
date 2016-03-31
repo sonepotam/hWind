@@ -26,7 +26,7 @@ public class Product {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     //public Set<ProductName> getProductNames(){ return productNames;};
     //public void setProductNames( Set<ProductName> productNames){ this.productNames = productNames; }
-    private Set<ProductName> productNames;
+    private Set<ProductName> name;
 
 
 
