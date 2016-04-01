@@ -20,6 +20,7 @@ public class ProductDTO {
 
     private String lang;
     private String productName;
+    private String s;
 
 
     private ProductDTO(){}
@@ -36,7 +37,7 @@ public class ProductDTO {
                              .findFirst();
         if( name.isPresent()) {
             productDTO.lang = name.get().getLanguage();
-            productDTO.productName = name.get().getLanguage();
+            productDTO.productName = name.get().getProductName();
         }
 
 
@@ -58,6 +59,13 @@ public class ProductDTO {
         return product;
     }
 
+    public String getS() {
+        return s;
+    }
+
+    public void setS(String s) {
+        this.s = s;
+    }
 
     public Integer getId() {
         return Id;

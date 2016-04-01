@@ -46,9 +46,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
 
 <!-- hwind -->
-<!--
 <script src="<c:url value="/resources/js/controller.js" />"></script>
--->
 
 
 </head>
@@ -70,7 +68,7 @@
 	</div>
 </div>
 
-<h2>Vitasoft TEST Application</h2>
+<h2>hWind TEST Application</h2>
 <hr>
 
 <div class="jumbotron">
@@ -79,7 +77,7 @@
             <!-- panel -->
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Редактирование договора страхования</h3>
+                    <h3 class="panel-title">Редактирование данных о продукте</h3>
                 </div>
                 <div class="panel-body">
                 <!-- panel -->
@@ -111,110 +109,9 @@
             </div>
 			</div> <!-- panel -->
 		</div>
-		<!-- можно попробовать поставить панель сюда -->
-        <div class="panel panel-primary">
-           <div class="panel-heading">
-              <h3 class="panel-title">Добавить водителя в список лиц, допущенных к управлению</h3>
-           </div>       
-           <div class="panel-body">
 
-               <div class="form-primary">
-                   <label for="autocomplete" class="col-sm-2 control-label">ФИО</label>
-                   <div class="col-sm-10">
-                      <input id ="autocomplete" class="form-control"/>
-                   </div>
-
-               </div>
-
-            </div>   
-        </div>
-
-	
 		</div>
 </div>
-
-	<!-- панель для редактирования -->
-	<div class="container">
-      <form class="form-horizontal" method="post" id="editForm">
-        <div class="panel panel-primary">
-           <div class="panel-heading">
-              <h3 class="panel-title">Редактирование данных о водителе</h3>
-              <input id="driverid" type="hidden"/>
-           </div>       
-           <div class="panel-body">
-              
-               <div class="form-group">
-                   <label for="surname" class="col-sm-2 control-label">Фамилия</label>
-                   <div class="col-sm-10">
-                      <input id="surname" type="text" class="form-control" placeholder="Фамилия" aria-describedby="basic-addon1">                       
-                   </div>
-               </div>
-               
-               <div class="form-group">
-                   <label for="name" class="col-sm-2 control-label">Имя</label>
-                   <div class="col-sm-10">
-                      <input id="name" type="text" class="form-control" placeholder="Имя" aria-describedby="basic-addon2">                       
-                   </div>
-               </div>
-               
-               <div class="form-group">
-                   <label for="secondname" class="col-sm-2 control-label">Отчество</label>
-                   <div class="col-sm-10">
-                      <input id="secondname" type="text" class="form-control" placeholder="Отчество" aria-describedby="basic-addon3">
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <label for="age" class="col-sm-2 control-label">Возраст</label>
-                   <div class="col-sm-10">
-                       <input id="age" type="text" class="form-control" aria-describedby="basic-addon4" disabled>
-                   </div>
-               </div>
-
-
-               <div class="form-group">
-                   <label for="category" class="col-sm-2 control-label">Категория прав</label>
-                   <div class="col-sm-10">
-                      <select id="category" class="form-control"></select>
-                   </div>
-               </div>
-               
-               <div class="form-group">
-                   <label for="surname" class="col-sm-2 control-label">Пол</label>
-                   <div class="col-sm-10">
-                      <select id= "sex" class="form-control">
-                         <option value="MALE"  >Муж</option>
-                         <option value="FEMALE">Жен</option>
-                      </select>                   
-                   </div>
-               </div>
-
-               <div class="input-group date" id="bdatepicker" onchange="setage()">
-                   <label for="surname" class="col-sm-2 control-label">Дата рождения</label>
-                   <div class="col-sm-10">
-                      <input id ="bdate" type="text" class="form-control"  />
-                      <span class="input-group-addon">
-                         <span class="glyphicon-calendar glyphicon"/>
-                       </span>
-                   </div>               
-               </div>
-
-
-           </div>
-           
-           <div class="panel-footer">               
-              <div class="form-group">
-       	        <div class="col-xs-9">
-	 	            <button id="drvsubmit" type="button" class="btn btn-primary" onclick="saveDriver()">Сохранить</button>
-		        </div>
-              </div>                              
-           </div>
-        </div>	    
-       </form> 
-	</div>
-
-	
-
 
 
  
