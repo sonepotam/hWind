@@ -19,10 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import java.util.Set;
 
 import org.json.*;
 
@@ -42,24 +39,10 @@ public class ProductController {
     @Autowired
     private HttpServletRequest request;
 
-/*
-    @RequestMapping( value="/{lang}/{startPage}/{size}", method = RequestMethod.GET)
-    public List<ProductDTO> getAll( @PathVariable("lang") String lang,
-                                    @PathVariable("startPage") int startPage,
-                                    @PathVariable("size") int size){
-        Page<Product> list = service.findAll( lang, startPage, size);
-        List<ProductDTO> listDTO = new ArrayList<>();
-        for( Product product: list){
-            listDTO.add( ProductDTO.convertProductToProductDTO( product, lang));
-        }
-        return listDTO;
-    }
-
-*/
 
     @RequestMapping(  method = RequestMethod.GET)
     @ResponseBody
-    public String /*ProductListWrapper */ getAll(){
+    public String getAll(){
 
         String pageNo = request.getParameter("iDisplayStart");
         String pageSize = request.getParameter("iDisplayLength");
@@ -69,7 +52,6 @@ public class ProductController {
 
         int startPage = 0;
         int size      = 10;
-
 
         if( pageNo != null){
             startPage = Integer.parseInt( pageNo);
@@ -94,7 +76,7 @@ public class ProductController {
                     .findFirst();
             row.put( name.isPresent() ? name.get().getProductName() : "???");
             row.put( product.getProductType());
-            row.put( product.getSpice());
+            row.put( product.getSpice()? "Да" : "Нет" );
             row.put( "Delete");
             row.put( "Edit");
             array.put( row);
@@ -119,7 +101,8 @@ public class ProductController {
 
 
     @RequestMapping( method = RequestMethod.POST)
-    public void updateOrCreate(ProductDTO productDTO, BindingResult result, SessionStatus status){
+    @Transactional
+    public void updateOrCreate(@RequestBody ProductDTO productDTO, BindingResult result, SessionStatus status){
         status.setComplete();
         Product product;
         if( productDTO.getId() == null){
@@ -128,11 +111,18 @@ public class ProductController {
         else {
             product = service.get( productDTO.getId());
         }
-        product = ProductDTO.convertProductDTOToProduct( productDTO, product);
+        product.setSpice( productDTO.getSpice());
+        product.setProductType( productDTO.getProductType());
+        Set<ProductName> nameSet = product.getProductNames();
+        ProductName p = new ProductName( productDTO.getLang(), productDTO.getProductName());
+        nameSet.add( p);
+
+
         service.save( product);
     }
 
     @RequestMapping( value = "/{id}", method = RequestMethod.DELETE)
+    @Transactional
     public ResponseEntity<String> delete(@PathVariable("id") Integer id){
         service.delete( id);
         return new ResponseEntity<String>(HttpStatus.OK);

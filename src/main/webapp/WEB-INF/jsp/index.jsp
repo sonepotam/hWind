@@ -113,7 +113,55 @@
 		</div>
 </div>
 
+<!-- окно для  продукта -->
+<div class="modal fade" id="editRow">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h2 class="modal-title">Редактирование продукта</h2>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" method="post" id="detailsForm">
+					<input id="prod-id" name="prod-id" hidden>
+					<div class="form-group">
+						<label for="prod-name" class="control-label col-sm-2">Продукт</label>
+						<div class="col-sm-10">
+							<input class="form-control" id="prod-name" name="prod-name" placeholder="Наименование продукта">
+						</div>
+					</div>
 
+					<div class="form-group">
+						<label for="prod-type" class="col-sm-2 control-label">Вид</label>
+						<div class="col-sm-10">
+							<select id= "prod-type" class="form-control">
+								<option value="SOLID" >Твердый</option>
+								<option value="LIQUID">Жидкий</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="prod-spice" class="col-sm-2 control-label">Приправа</label>
+						<div class="col-sm-10">
+							<select id= "prod-spice" class="form-control">
+								<option value="Y">Да</option>
+								<option value="N">Нет</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-offset-3 col-sm-10">
+							<button type="submit" class="btn btn-primary">Сохранить</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
  
 
 

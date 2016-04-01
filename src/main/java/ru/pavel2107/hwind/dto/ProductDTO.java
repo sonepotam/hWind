@@ -20,7 +20,6 @@ public class ProductDTO {
 
     private String lang;
     private String productName;
-    private String s;
 
 
     private ProductDTO(){}
@@ -57,14 +56,6 @@ public class ProductDTO {
         nameSet.add( p);
 
         return product;
-    }
-
-    public String getS() {
-        return s;
-    }
-
-    public void setS(String s) {
-        this.s = s;
     }
 
     public Integer getId() {

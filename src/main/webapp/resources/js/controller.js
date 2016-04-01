@@ -2,6 +2,7 @@ var refDataTable;
 
 
 var ajaxUrl = "http://localhost:8080/hwind/rest/product/";
+var lang = "ru_ru";
 
 
 var failedNote;
@@ -61,18 +62,59 @@ $(document).ready(function() {
             }
         });
 
+    $('#addRow').click(function () {
+        // document.getElementById("iban").disabled = false;
+        // form.find("input").val("");
+    });
+
+    $("#detailsForm").submit(function () {
+        $('#editRow').modal('hide');
+        alert( "Submit");
+        save();
+        return false;
+    });
+
 
 
 });
 
+function save(){
 
+    var product = {}
+    product["id"]          = $("#prod-id"   ).val();
+    product["lang"]        = lang;
+    product["productName"] = $("#prod-name").val();
+    product["productType"] = $("#prod-type" ).val();
+    product["spice"]       = $("#prod-spice"  ).val() == "Y";
+
+    $.ajax({
+        type : "POST",
+        contentType : "application/json",
+        url : ajaxUrl,
+        data : JSON.stringify(product),
+        dataType : 'json',
+        timeout : 100000,
+        success : function(data) {
+            console.log( "send list.web");
+            successNoty('Sended');
+        },
+        error : function(e) {
+            console.log("ERROR: ", e);
+        },
+        done : function(e) {
+            successNoty('Done');
+        }
+    });
+
+    return false;
+}
 
 <!-- rendering buttons -->
 
 function renderEditBtn(data, type, row) {
     if (type == 'display') {
         var id = row[0];
-        return '<a class="btn btn-xs btn-primary" onclick="editRow(\'' + id + '\');">Edit</a>';
+        return '<a class="btn btn-xs btn-primary" onclick="updateRow(\'' + id + '\');">Edit</a>';
     }
     return data;
 }
@@ -86,7 +128,38 @@ function renderDeleteBtn(data, type, row) {
 }
 
 
-    <!-- Noty -->
+<!-- buttons -->
+function updateRow(id) {
+   $.get(ajaxUrl + id + "/" + lang, function (data) {
+       $("#prod-id"   ).val( data.id);
+       $("#prod-type" ).val( data.productType);
+       $("#prod-name").val( data.productName);
+       $("#prod-spice"  ).val( data.spice ? "Y": "N" );
+
+       $('#editRow').modal();
+      console.log( "updateRow.ajax");
+   });
+}
+
+function deleteRow(id) {
+  $.ajax({
+      url: ajaxUrl + id,
+      type: 'DELETE',
+      success: function () {
+          updateTable();
+          console.log( "deleteRow.ajax");
+          successNoty('Deleted');
+      }
+  });
+}
+
+
+function updateTable() {
+    console.log( "updated");
+}
+
+
+<!-- Noty -->
 function closeNoty() {
     if (failedNote) {
         failedNote.close();
