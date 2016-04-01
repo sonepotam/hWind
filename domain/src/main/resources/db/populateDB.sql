@@ -1,7 +1,0 @@
-DELETE FROM names;
-DELETE FROM product;
-
-ALTER SEQUENCE product_seq RESTART WITH 1;
-ALTER SEQUENCE nam_seq     RESTART WITH 1;
-
-
