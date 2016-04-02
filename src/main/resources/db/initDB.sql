@@ -14,11 +14,11 @@ create table products(
 
 
 create table names(
-  id integer primary key default nextval( 'names_seq'),
   lang VARCHAR,
   name varchar,
-  product INTEGER,
-  FOREIGN KEY ( product) REFERENCES products(id) on DELETE CASCADE
+  product_id INTEGER,
+  FOREIGN KEY ( product) REFERENCES products(id) on DELETE CASCADE,
+  primary key ( product_id, lang)
 );
 
 create UNIQUE INDEX names_unique_lang_name on names( lang, name);

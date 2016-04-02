@@ -5,16 +5,22 @@ import javax.persistence.*;
 /**
  * Created by admin on 29.03.2016.
  *
+ * @JoinTable(name="USER_ADDRESS",
+joinColumns=@JoinColumn(name="USER_ID"))
+ @GenericGenerator(strategy="hilo", name = "hilo-gen")
+ @CollectionId(columns = { @Column(name="ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type="long"))
  */
 
-@Entity
+//@Entity
 @Table( name = "names")
+@Embeddable
 public class ProductName {
 
-    @Id
-    @SequenceGenerator( name ="gen_names_id", sequenceName = "names_seq", allocationSize = 10)
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "gen_names_id")
-    private Integer ID;
+    //@Id
+    //@SequenceGenerator( name ="gen_names_id", sequenceName = "names_seq", allocationSize = 10)
+    //@GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "gen_names_id")
+    //@Column( name="ID")
+    //private Integer ID;
 
     @Column( name = "lang", nullable = false)
     private String language;
@@ -24,9 +30,9 @@ public class ProductName {
     private  String productName;
 
 
-    @ManyToOne
-    @JoinColumn( name = "product")
-    private Product product;
+   // @ManyToOne
+   // @JoinColumn( name = "product")
+   // private Product product;
 
 
     public ProductName() {}
@@ -36,17 +42,6 @@ public class ProductName {
         this.productName = productName;
     }
 
-    public Product getProduct(){ return product;}
-    public void setProduct( Product product){ this.product = product;}
-
-
-    public Integer getID() {
-        return ID;
-    }
-
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
 
     public String getLanguage() {
         return language;
@@ -57,9 +52,8 @@ public class ProductName {
     }
 
     public String getProductName() {
-        return productName;
+       return productName;
     }
-
     public void setProductName(String productName) {
         this.productName = productName;
     }
@@ -70,8 +64,6 @@ public class ProductName {
         if (o == null || getClass() != o.getClass()) return false;
 
         ProductName that = (ProductName) o;
-
-        if (!ID.equals(that.ID)) return false;
         if (!language.equals(that.language)) return false;
         return productName.equals(that.productName);
 
@@ -79,19 +71,9 @@ public class ProductName {
 
     @Override
     public int hashCode() {
-        int result = ID.hashCode();
-        result = 31 * result + language.hashCode();
-        result = 31 * result + productName.hashCode();
+        int result = 0;
+        result = 31 * result + (language != null ? language.hashCode() : 0);
+        result = 31 * result + (productName != null ? productName.hashCode() : 0);
         return result;
-    }
-
-
-    @Override
-    public String toString() {
-        return "ProductName{" +
-                "ID=" + ID +
-                ", language='" + language + '\'' +
-                ", productName='" + productName + '\'' +
-                '}';
     }
 }

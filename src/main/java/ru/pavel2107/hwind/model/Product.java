@@ -1,11 +1,21 @@
 package ru.pavel2107.hwind.model;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 /**
  * Created by admin on 29.03.2016
+ * http://www.codejava.net/frameworks/hibernate/hibernate-basics-3-ways-to-delete-an-entity-from-the-datastore
+ * http://www.concretepage.com/hibernate/elementcollection_hibernate_annotation
+ * http://www.dineshonjava.com/p/configuring-collections-and-adding-keys.html#.Vv-KEl5RW5A
+ *
  *
  */
 @Entity
@@ -23,10 +33,13 @@ public class Product {
     @Column( name = "spice")
     private Boolean spice;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
-    private Set<ProductName> name;
+    @ElementCollection( fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "names",
+            joinColumns = @JoinColumn( name = "product_id")  )
+    private Collection<ProductName> name = new ArrayList<>();
 
-    public Set<ProductName> getProductNames(){ return name;};
+    public Collection<ProductName> getProductNames(){ return name;};
     public void setProductNames( Set<ProductName> productNames){ this.name = productNames; }
 
 

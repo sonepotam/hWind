@@ -16,10 +16,7 @@ import ru.pavel2107.hwind.model.ProductName;
 import ru.pavel2107.hwind.service.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import org.json.*;
 
@@ -75,7 +72,8 @@ public class ProductController {
                     .filter( p ->( lang.equals( p.getLanguage())))
                     .findFirst();
             row.put( name.isPresent() ? name.get().getProductName() : "???");
-            row.put( product.getProductType());
+
+            row.put( "SOLID".equals( product.getProductType()) ? "Твердый" : "Жидкий");
             row.put( product.getSpice()? "Да" : "Нет" );
             row.put( "Delete");
             row.put( "Edit");
@@ -113,10 +111,21 @@ public class ProductController {
         }
         product.setSpice( productDTO.getSpice());
         product.setProductType( productDTO.getProductType());
-        Set<ProductName> nameSet = product.getProductNames();
-        ProductName p = new ProductName( productDTO.getLang(), productDTO.getProductName());
-        nameSet.add( p);
+        Collection<ProductName> nameSet = product.getProductNames();
 
+        boolean found = false;
+        Iterator<ProductName> it = nameSet.iterator();
+        while( !found && it.hasNext()){
+            ProductName p = it.next();
+            if( p.getLanguage().equals( productDTO.getLang())){
+                found = true;
+                p.setProductName( productDTO.getProductName());
+            }
+        }
+        if( !found) {
+            ProductName p = new ProductName(productDTO.getLang(), productDTO.getProductName());
+            product.getProductNames().add(p);
+        }
 
         service.save( product);
     }

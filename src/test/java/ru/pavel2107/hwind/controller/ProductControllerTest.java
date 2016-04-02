@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import ru.pavel2107.hwind.model.Product;
 
 import javax.annotation.PostConstruct;
 
@@ -51,6 +52,10 @@ public class ProductControllerTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
+
+    @Autowired
+    ProductController controller;
+
 
     @PostConstruct
     void postConstruct() throws Exception {

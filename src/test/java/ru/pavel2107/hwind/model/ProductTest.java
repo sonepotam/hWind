@@ -69,7 +69,7 @@ public class ProductTest {
         Product product = new Product();
         List<ProductName> list = new ArrayList<>();
         ProductName engName = new ProductName();
-        engName.setID(1);
+       // engName.setID(1);
         engName.setLanguage( "fr_fr");
         engName.setProductName( "hello");
         list.add( engName);

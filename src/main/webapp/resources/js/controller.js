@@ -21,14 +21,14 @@ $(document).ready(function() {
             "bPaginate": true,
             "bInfo": true,
             "iDisplayStart":0,
-            "bProcessing" : true,
+            "bProcessing" : false,
             "bServerSide" : true,
             "sAjaxSource" : ajaxUrl,
             "stateSave"   : true,
             "columns": [
                 { // id
-                    "searchable": true,
-                    "orderable" : true,
+                    "searchable": false,
+                    "orderable" : false,
                 },
                 {  // name
                     "searchable": true,
@@ -36,11 +36,11 @@ $(document).ready(function() {
                 },
                 {   // тип
                     "searchable": false,
-                    "orderable": true
+                    "orderable": false
                 },
                 {   // приправа
                     "searchable": false,
-                    "orderable": true
+                    "orderable": false
                 },
                 {   // deleteBtn
                     "searchable": false,
@@ -63,13 +63,14 @@ $(document).ready(function() {
         });
 
     $('#addRow').click(function () {
-        // document.getElementById("iban").disabled = false;
-        // form.find("input").val("");
+        $("#prod-id"   ).val("");
+        $("#prod-name").val("");
+        $("#prod-type" ).val("");
+        $("#prod-spice"  ).val(false);
     });
 
     $("#detailsForm").submit(function () {
         $('#editRow').modal('hide');
-        alert( "Submit");
         save();
         return false;
     });
@@ -95,6 +96,7 @@ function save(){
         dataType : 'json',
         timeout : 100000,
         success : function(data) {
+            updateTable();
             console.log( "send list.web");
             successNoty('Sended');
         },
@@ -155,6 +157,9 @@ function deleteRow(id) {
 
 
 function updateTable() {
+    refDataTable.rows().invalidate();
+    refDataTable.draw();
+
     console.log( "updated");
 }
 

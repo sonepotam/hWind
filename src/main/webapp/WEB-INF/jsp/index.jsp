@@ -81,36 +81,42 @@
                 </div>
                 <div class="panel-body">
                 <!-- panel -->
+                	<div class="view-box">
+					<table class="table table-striped table-bordered" id="datatable">
+						<thead>
+					    	<th>id</th>
+							<th>Название</th>
+					    	<th>Тип</th>
+					    	<th>Приправа</th>
+					    	<th></th>
+					    	<th></th>
+                    	</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+							  	<td>Какое-то название</td>
+							  	<td>Твердый</td>
+							  	<td>Да</td>
+							  	<td>Delete</td>
+							  	<td>Edit</td>
+							</tr>
+						</tbody>
+					</table>
+                	</div> <!-- view box -->
+            	</div> <!-- panel-body -->
 
-                <div class="view-box">
-				<table class="table table-striped table-bordered" id="datatable">
-					<thead>
-					    <th>id</th>
-						<th>Название</th>
-					    <th>Тип</th>
-					    <th>Приправа</th>
-					    <th></th>
-					    <th></th>
-                    </thead>
-					<tbody>
+				<div class="panel-footer">
+					<div class="btn-group">
+						<p>
+							<a id="addRow"   class="btn btn-success" data-toggle="modal" data-target="#editRow">Добавить продукт</a>
+						</p>
+					</div>
 
-					  <tr>
-						  <td>1</td>
-						  <td>Какое-то название</td>
-						  <td>Твердый</td>
-						  <td>Да</td>
-						  <td>Delete</td>
-						  <td>Edit</td>
-					  </tr>
+				</div>
 
-					</tbody>
-				</table>
-                </div> <!-- panel body -->
-            </div>
 			</div> <!-- panel -->
 		</div>
-
-		</div>
+	</div>
 </div>
 
 <!-- окно для  продукта -->

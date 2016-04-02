@@ -4,6 +4,7 @@ import ru.pavel2107.hwind.model.PRODUCT_TYPE;
 import ru.pavel2107.hwind.model.Product;
 import ru.pavel2107.hwind.model.ProductName;
 
+import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -39,9 +40,6 @@ public class ProductDTO {
             productDTO.productName = name.get().getProductName();
         }
 
-
-
-
         return productDTO;
     }
 
@@ -51,7 +49,7 @@ public class ProductDTO {
         product.setProductType( product.getProductType());
 
         //TODO: исправить список названий. Надо только отсутсвующий добавлять
-        Set<ProductName> nameSet = product.getProductNames();
+        Collection<ProductName> nameSet = product.getProductNames();
         ProductName p = new ProductName( productDTO.getLang(), productDTO.getProductName());
         nameSet.add( p);
 

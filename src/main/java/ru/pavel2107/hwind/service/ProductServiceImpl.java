@@ -21,10 +21,12 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository repository;
 
+    @Transactional
     public Product save(Product product) {
         return repository.save( product);
     }
 
+    @Transactional
     public void delete(Integer ID) {
        repository.delete( ID);
     }
@@ -34,9 +36,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public Page<Product> findAll(String lang, int startPage, int size) {
-
-      //  return (List<Product>)repository.findByNameLanguage( lang,
-      //          new PageRequest( startPage, size, Sort.Direction.ASC, "name"));
       Page<Product> page =  repository.findAll( new PageRequest( startPage, size));
       return page;
     }
