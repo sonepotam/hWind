@@ -39,4 +39,16 @@ public class ProductServiceImpl implements ProductService {
       Page<Product> page =  repository.findAll( new PageRequest( startPage, size));
       return page;
     }
+
+    /*
+    public List<Product> findSorted(String lang, String productName, int startPage, int size) {
+        List<Product> page =  repository.findByNameLanguageAndNameProductNameStartingWith( lang, productName); //, new PageRequest( startPage, size));
+        return page;
+    }
+*/
+    public Page<Product> findSorted(String lang, String productName, int startPage, int size) {
+        Page<Product> page =  repository.findByNameLanguageAndNameProductNameStartingWith( lang, productName, new PageRequest( startPage, size));
+        return page;
+    }
+
 }

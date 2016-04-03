@@ -4,11 +4,14 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import ru.pavel2107.hwind.model.Product;
+
+import java.util.List;
 
 /**
  * Created by pavel2107 on 02.04.16.
@@ -30,6 +33,12 @@ public class ProductServiceImplTest extends TestCase {
         System.out.println( product.toString());
     }
 
+
+    @Test
+    public void testSorted() throws Exception {
+        Page<Product> page = service.findSorted( "fr", "", 0, 10);
+        System.out.println( page.toString());
+    }
 
     @Test
     public void testSave() throws Exception {

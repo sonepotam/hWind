@@ -14,4 +14,5 @@ public interface ProductService {
     void delete( Integer ID);
     Product get( Integer ID);
     Page<Product> findAll( String lang, int startPage, int count);
+    Page<Product> findSorted( String lang, String productName, int startPage, int count);
 }

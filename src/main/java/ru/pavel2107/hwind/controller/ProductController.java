@@ -37,15 +37,16 @@ public class ProductController {
     private HttpServletRequest request;
 
 
-    @RequestMapping(  method = RequestMethod.GET)
+    @RequestMapping( value="/{lang}", method = RequestMethod.GET)
     @ResponseBody
-    public String getAll(){
+    public String getAll( @PathVariable( "lang") String langStr){
 
         String pageNo = request.getParameter("iDisplayStart");
         String pageSize = request.getParameter("iDisplayLength");
         String colIndex = request.getParameter("iSortCol_0");
         String sortDirection = request.getParameter("sSortDir_0");
-        String lang          = "ru_ru";
+        String searchStr     = request.getParameter("sSearch");
+        String lang          = langStr;
 
         int startPage = 0;
         int size      = 10;
@@ -55,8 +56,11 @@ public class ProductController {
             size      = Integer.parseInt( pageSize);
         }
         startPage = startPage/ size;
+        if( ! "".equals( searchStr)){
+            startPage=0;
+        }
 
-        Page<Product> page = service.findAll( lang, startPage, size);
+        Page<Product> page = service.findSorted( lang, searchStr, startPage, size);
 
         JSONObject result = new JSONObject();
         result.put("iTotalRecords", page.getTotalElements());

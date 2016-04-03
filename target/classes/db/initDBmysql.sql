@@ -1,20 +1,17 @@
 DROP TABLE IF EXISTS names CASCADE;
 DROP TABLE IF EXISTS products CASCADE;
 
-drop sequence if EXISTS products_seq;
-
-create sequence products_seq start with 1;
 
 create table products(
-  id         INTEGER PRIMARY KEY DEFAULT nextval('products_seq'),
+  id         INTEGER PRIMARY KEY AUTO_INCREMENT,
   pr_type    INTEGER NOT NULL,
   spice      BOOLEAN not null
 );
 
 
 create table names(
-  lang VARCHAR,
-  name varchar,
+  lang VARCHAR(20),
+  name varchar(250),
   product_id INTEGER,
   FOREIGN KEY ( product_id) REFERENCES products(id) on DELETE CASCADE,
   primary key ( product_id, lang)

@@ -5,22 +5,12 @@ import javax.persistence.*;
 /**
  * Created by admin on 29.03.2016.
  *
- * @JoinTable(name="USER_ADDRESS",
-joinColumns=@JoinColumn(name="USER_ID"))
- @GenericGenerator(strategy="hilo", name = "hilo-gen")
- @CollectionId(columns = { @Column(name="ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type="long"))
  */
 
-//@Entity
 @Table( name = "names")
 @Embeddable
 public class ProductName {
 
-    //@Id
-    //@SequenceGenerator( name ="gen_names_id", sequenceName = "names_seq", allocationSize = 10)
-    //@GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "gen_names_id")
-    //@Column( name="ID")
-    //private Integer ID;
 
     @Column( name = "lang", nullable = false)
     private String language;
@@ -28,12 +18,6 @@ public class ProductName {
 
     @Column( name ="name", nullable = false)
     private  String productName;
-
-
-   // @ManyToOne
-   // @JoinColumn( name = "product")
-   // private Product product;
-
 
     public ProductName() {}
 
