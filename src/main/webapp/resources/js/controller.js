@@ -1,7 +1,8 @@
 var refDataTable;
 
 
-var ajaxUrl = "http://localhost:8080/hwind/rest/product/";
+var ajaxUrl = "rest/product/";
+//var ajaxUrl = "http://localhost:8080/hwind/rest/product/";
 var lang = "ru_ru";
 
 

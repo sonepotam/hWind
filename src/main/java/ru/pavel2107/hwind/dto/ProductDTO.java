@@ -44,17 +44,7 @@ public class ProductDTO {
     }
 
 
-    public static Product convertProductDTOToProduct( ProductDTO productDTO, Product product){
-        product.setSpice( product.getSpice());
-        product.setProductType( product.getProductType());
 
-        //TODO: исправить список названий. Надо только отсутсвующий добавлять
-        Collection<ProductName> nameSet = product.getProductNames();
-        ProductName p = new ProductName( productDTO.getLang(), productDTO.getProductName());
-        nameSet.add( p);
-
-        return product;
-    }
 
     public Integer getId() {
         return Id;

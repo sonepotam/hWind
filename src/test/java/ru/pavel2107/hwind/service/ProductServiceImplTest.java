@@ -28,7 +28,7 @@ public class ProductServiceImplTest extends TestCase {
 
     @Test
     public void testGet() throws Exception {
-        Product product = service.get( 40);
+        Product product = service.get( 4);
         assertTrue( "broken",  product != null);
         System.out.println( product.toString());
     }
@@ -42,7 +42,7 @@ public class ProductServiceImplTest extends TestCase {
 
     @Test
     public void testSave() throws Exception {
-        Product product = service.get( 40);
+        Product product = service.get(4);
         System.out.println( product.toString());
         String before = product.toString();
         product.setSpice( !product.getSpice());

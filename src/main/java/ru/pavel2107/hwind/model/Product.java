@@ -27,7 +27,6 @@ public class Product {
     //@SequenceGenerator( name="prod_id_gen", sequenceName = "products_seq", allocationSize = 1)
     //@GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "prod_id_gen")
     //mysql
-    // does not work @GeneratedValue(strategy=GenerationType.AUTO)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer ID;
 

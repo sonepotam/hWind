@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by admin on 29.03.2016.
+ * магия спринга :) где же реализация ? ее нет :)
  */
 public interface ProductRepository extends JpaRepository<Product, Integer>{
    Page<Product> findByNameLanguageAndNameProductNameStartingWith(String lang, String productName, Pageable pageable);

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 /**
  * Created by admin on 29.03.2016.
- *
+ * наименование продукта не является отдельной сущностью, поэтому Embedabble
  */
 
 @Table( name = "names")
