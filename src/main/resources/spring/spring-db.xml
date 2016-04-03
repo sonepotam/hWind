@@ -46,7 +46,7 @@
 
 
 
-    <jdbc:initialize-database data-source="dataSource" enabled="false">
+    <jdbc:initialize-database data-source="dataSource" enabled="true">
         <jdbc:script location="classpath:/db/initDBmysql.sql"/>
         <jdbc:script encoding="utf-8" location="classpath:/db/populateDBmysql.sql"/>
     </jdbc:initialize-database>

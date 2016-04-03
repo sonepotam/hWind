@@ -60,6 +60,8 @@ public class ProductController {
             startPage=0;
         }
 
+        if( searchStr == null) searchStr = "";
+
         Page<Product> page = service.findSorted( lang, searchStr, startPage, size);
 
         JSONObject result = new JSONObject();

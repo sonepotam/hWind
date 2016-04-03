@@ -1,5 +1,8 @@
 package ru.pavel2107.hwind.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,11 +18,14 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import ru.pavel2107.hwind.model.PRODUCT_TYPE;
 import ru.pavel2107.hwind.model.Product;
+import ru.pavel2107.hwind.model.ProductName;
 
 import javax.annotation.PostConstruct;
 
 import static org.junit.Assert.assertEquals;
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -74,7 +80,7 @@ public class ProductControllerTest {
         String start = "2";
         String size  = "5";
 
-        mockMvc.perform(get(REST_URL + "/" + lang + "/" + start + "/" + size)
+        mockMvc.perform(get(REST_URL + "/" + lang)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print())
@@ -84,18 +90,34 @@ public class ProductControllerTest {
 
     }
 
-    //@Test
+    @Test
     public void testGet() throws Exception {
+
+        String lang = "ru_ru";
+        String id = "1";
+
+        mockMvc.perform(get(REST_URL + "/" + id + "/" + lang)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
 
     }
 
-    //@Test
+    @Test
+    public void testDelete() throws Exception {
+        String id = "1";
+
+        mockMvc.perform(delete(REST_URL + "/" + id)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+
+    }
+
+
+    @Test
     public void testUpdateOrCreate() throws Exception {
 
     }
 
-    //@Test
-    public void testDelete() throws Exception {
-
-    }
 }

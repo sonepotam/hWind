@@ -282,7 +282,7 @@
 
 
 <build>
-<finalName>web</finalName>
+<finalName>hwind</finalName>
 <defaultGoal>package</defaultGoal>
 <plugins>
     <plugin>

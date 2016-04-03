@@ -44,7 +44,7 @@ public class Product {
     private Collection<ProductName> name = new ArrayList<>();
 
     public Collection<ProductName> getProductNames(){ return name;};
-    public void setProductNames( Set<ProductName> productNames){ this.name = productNames; }
+    public void setProductNames( Collection<ProductName> productNames){ this.name = productNames; }
 
 
     public Boolean getSpice() {
